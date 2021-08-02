@@ -1,14 +1,28 @@
 import React from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import { generatePasswordActions } from "../store/index";
+
+const copyToClipboard = () => {
+  let elementText = document.getElementById("password").textContent;
+  return navigator.clipboard.writeText(elementText);
+};
+
 function PasswordBar(props) {
-  const copyToClipboard = () => {
-    let elementText = document.getElementById("password").textContent;
-    return navigator.clipboard.writeText(elementText);
+  const thePassword = useSelector((state) => state.password.thePassword);
+  const dispatch = useDispatch();
+
+  const onClickRegenerateButtonHandler = (event) => {
+    dispatch(generatePasswordActions.isRegenerateHandler());
   };
+
   return (
     <div className="flex flex-col">
-      <p className="text-center font-mono text-md whitespace-nowrap overflow-auto" id="password">
-        {props.createdPassword}
+      <p
+        className="text-center font-mono text-md whitespace-nowrap overflow-auto"
+        id="password"
+      >
+        {thePassword}
       </p>
       <div className="flex mx-auto space-x-2 mt-3">
         <button
@@ -22,7 +36,7 @@ function PasswordBar(props) {
         <button
           type="button"
           className="w-9 py-2 mx-auto bg-red-500 hover:bg-red-700 text-white font-bold rounded focus:outline-none focus:shadow-outline bg-gradient-to-r from-pink-400 to-yellow-500"
-          onClick={props.onClick}
+          onClick={onClickRegenerateButtonHandler}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

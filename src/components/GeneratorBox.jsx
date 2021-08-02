@@ -1,87 +1,60 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { generatePasswordActions } from "../store/index";
+import { useDispatch, useSelector } from "react-redux";
 
 import CheckBoxInput from "./UI/CheckBoxInput";
 import NumberInput from "./UI/NumberInput";
 
-function GeneratorBox(props) {
-  const [length, setLength] = useState(12);
-  const [isCheckBoxInputLowercase, setIsCheckBoxInputLowercase] =
-    useState(true);
-  const [isCheckBoxInputUppercase, setIsCheckBoxInputUppercase] =
-    useState(false);
-  const [isCheckBoxInputNumbers, setIsCheckBoxInputNumbers] = useState(false);
-  const [isCheckBoxInputSymbols, setIsCheckBoxInputSymbols] = useState(false);
+import passwordGenerator from "./passwordGenerator";
+
+function GeneratorBox() {
+  const length = useSelector((state) => state.password.length);
+  const hasLowercase = useSelector((state) => state.password.hasLowercase);
+  const hasUppercase = useSelector((state) => state.password.hasUppercase);
+  const hasNumbers = useSelector((state) => state.password.hasNumbers);
+  const hasSymbols = useSelector((state) => state.password.hasSymbols);
+  const isRegenerate = useSelector((state) => state.password.isRegenerate);
+  const dispatch = useDispatch();
 
   const numberInputOnChangeHandler = (event) => {
-    setLength(event.target.value);
+    dispatch(generatePasswordActions.lengthHandler(event.target.value));
   };
 
-  const CheckBoxInputLowerCaseOnChangeHandler = (event) => {
-    setIsCheckBoxInputLowercase(event.target.checked);
+  const CheckBoxInputLowerCaseOnChangeHandler = () => {
+    dispatch(generatePasswordActions.hasLowercaseHandler());
   };
 
-  const CheckBoxInputUpperCaseOnChangeHandler = (event) => {
-    setIsCheckBoxInputUppercase(event.target.checked);
+  const CheckBoxInputUpperCaseOnChangeHandler = () => {
+    dispatch(generatePasswordActions.hasUppercaseHandler());
   };
 
-  const CheckBoxInputNumbersOnChangeHandler = (event) => {
-    setIsCheckBoxInputNumbers(event.target.checked);
+  const CheckBoxInputNumbersOnChangeHandler = () => {
+    dispatch(generatePasswordActions.hasNumbersHandler());
   };
 
-  const CheckBoxInputSymbolsOnChangeHandler = (event) => {
-    setIsCheckBoxInputSymbols(event.target.checked);
+  const CheckBoxInputSymbolsOnChangeHandler = () => {
+    dispatch(generatePasswordActions.hasSymbolsHandler());
   };
 
   useEffect(() => {
-    let lowers = "abcdefghijklmnopqrstuvwxyz";
-    let uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let numbers = "0123456789";
-    let symbols = "!@#$%^&*()";
+    const thePassword = passwordGenerator(
+      length,
+      hasLowercase,
+      hasUppercase,
+      hasNumbers,
+      hasSymbols
+    );
 
-    let is_lower = isCheckBoxInputLowercase;
-    let is_upper = isCheckBoxInputUppercase;
-    let is_numbers = isCheckBoxInputNumbers;
-    let is_symbols = isCheckBoxInputSymbols;
-
-    let bag_of_chars = "";
-
-    if (is_lower) {
-      bag_of_chars += lowers;
-    }
-
-    if (is_upper) {
-      bag_of_chars += uppers;
-    }
-
-    if (is_numbers) {
-      bag_of_chars += numbers;
-    }
-
-    if (is_symbols) {
-      bag_of_chars += symbols;
-    }
-
-    let thePassword = "";
-
-    if (bag_of_chars.length === 0) {
-      thePassword = "null";
-    } else {
-      for (let i = 0; i < length; i++) {
-        const index = Math.floor(Math.random() * bag_of_chars.length);
-        thePassword += bag_of_chars[index];
-      }
-    }
-
-    props.onPasswordCreated(thePassword);
+    dispatch(generatePasswordActions.createPasswordHandler(thePassword));
 
     return;
   }, [
     length,
-    isCheckBoxInputLowercase,
-    isCheckBoxInputUppercase,
-    isCheckBoxInputNumbers,
-    isCheckBoxInputSymbols,
-    props.isRegenerate,
+    hasLowercase,
+    hasUppercase,
+    hasNumbers,
+    hasSymbols,
+    isRegenerate,
   ]);
 
   return (
@@ -97,25 +70,25 @@ function GeneratorBox(props) {
         id="lowercase"
         label="Lowercase"
         onChange={CheckBoxInputLowerCaseOnChangeHandler}
-        isChecked={isCheckBoxInputLowercase}
+        isChecked={hasLowercase}
       />
       <CheckBoxInput
         id="uppercase"
         label="Uppercase"
         onChange={CheckBoxInputUpperCaseOnChangeHandler}
-        isChecked={isCheckBoxInputUppercase}
+        isChecked={hasUppercase}
       />
       <CheckBoxInput
         id="numbers"
         label="Numbers"
         onChange={CheckBoxInputNumbersOnChangeHandler}
-        isChecked={isCheckBoxInputNumbers}
+        isChecked={hasNumbers}
       />
       <CheckBoxInput
         id="symbols"
-        label="symbols"
+        label="Symbols"
         onChange={CheckBoxInputSymbolsOnChangeHandler}
-        isChecked={isCheckBoxInputSymbols}
+        isChecked={hasSymbols}
       />
     </div>
   );
