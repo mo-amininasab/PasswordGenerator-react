@@ -1,28 +1,31 @@
 import React from "react";
+import { Route, Redirect, Switch } from "react-router-dom";
 
+// Components
 import Navbar from "./components/Navbar";
-import ContainerCenter from "./components/ContainerCenter";
-import GeneratorBox from "./components/GeneratorBox";
-import PasswordBar from "./components/PasswordBar";
-import DoubleBoarderContainer from "./components/UI/DoubleBoarderContainer";
+
+// Pages
+import Home from "./components/pages/Home";
+import AboutMe from "./components/pages/AboutMe";
 
 function App() {
   return (
     <>
       <Navbar />
-      <ContainerCenter>
-        <DoubleBoarderContainer>
-          <PasswordBar />
-        </DoubleBoarderContainer>
 
-        <DoubleBoarderContainer>
-          <GeneratorBox />
-        </DoubleBoarderContainer>
+      <Switch>
+        <Route path="/home">
+          <Home />
+        </Route>
 
-        <p className="text-center text-gray-500 text-xs mb-12">
-          &copy;2021. All rights reserved.
-        </p>
-      </ContainerCenter>
+        <Route path="/about-me">
+          <AboutMe />
+        </Route>
+
+        <Route path="*">
+          <Redirect to="/home" />
+        </Route>
+      </Switch>
     </>
   );
 }
