@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mohammad31415.github.io/PasswordGenerator-react",
+  "homepage": "https://mohammad31415.github.io/PasswordGenerator-react/",
   "dependencies": {
     "@craco/craco": "^6.2.0",
     "@reduxjs/toolkit": "^1.6.1",

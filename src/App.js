@@ -18,11 +18,11 @@ function App() {
           <Redirect to="home" />
         </Route> */}
 
-        <Route path="home" exact>
+        <Route path="/home" exact>
           <Home />
         </Route>
 
-        <Route path="about-me">
+        <Route path="/about-me">
           <AboutMe />
         </Route>
 
