@@ -14,16 +14,16 @@ function App() {
       <Navbar />
 
       <Switch>
-        <Route path="PasswordGenerator-react/home">
+        <Route path="/home">
           <Home />
         </Route>
 
-        <Route path="PasswordGenerator-react/about-me">
+        <Route path="/about-me">
           <AboutMe />
         </Route>
 
         <Route path="*">
-          <Redirect to="PasswordGenerator-react/home" />
+          <Redirect to="/home" />
         </Route>
       </Switch>
     </>
