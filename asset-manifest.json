@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/PasswordGenerator-react/static/css/main.0a1ebcb5.chunk.css",
-    "main.js": "/PasswordGenerator-react/static/js/main.03e238bf.chunk.js",
-    "main.js.map": "/PasswordGenerator-react/static/js/main.03e238bf.chunk.js.map",
+    "main.css": "/PasswordGenerator-react/static/css/main.f9b2cd73.chunk.css",
+    "main.js": "/PasswordGenerator-react/static/js/main.8530f87a.chunk.js",
+    "main.js.map": "/PasswordGenerator-react/static/js/main.8530f87a.chunk.js.map",
     "runtime-main.js": "/PasswordGenerator-react/static/js/runtime-main.2a379f62.js",
     "runtime-main.js.map": "/PasswordGenerator-react/static/js/runtime-main.2a379f62.js.map",
-    "static/js/2.34425a89.chunk.js": "/PasswordGenerator-react/static/js/2.34425a89.chunk.js",
-    "static/js/2.34425a89.chunk.js.map": "/PasswordGenerator-react/static/js/2.34425a89.chunk.js.map",
+    "static/js/2.f827ef3f.chunk.js": "/PasswordGenerator-react/static/js/2.f827ef3f.chunk.js",
+    "static/js/2.f827ef3f.chunk.js.map": "/PasswordGenerator-react/static/js/2.f827ef3f.chunk.js.map",
     "index.html": "/PasswordGenerator-react/index.html",
-    "static/css/main.0a1ebcb5.chunk.css.map": "/PasswordGenerator-react/static/css/main.0a1ebcb5.chunk.css.map",
-    "static/js/2.34425a89.chunk.js.LICENSE.txt": "/PasswordGenerator-react/static/js/2.34425a89.chunk.js.LICENSE.txt"
+    "static/css/main.f9b2cd73.chunk.css.map": "/PasswordGenerator-react/static/css/main.f9b2cd73.chunk.css.map",
+    "static/js/2.f827ef3f.chunk.js.LICENSE.txt": "/PasswordGenerator-react/static/js/2.f827ef3f.chunk.js.LICENSE.txt",
+    "static/media/my-pic.c91520f2.jpg": "/PasswordGenerator-react/static/media/my-pic.c91520f2.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.2a379f62.js",
-    "static/js/2.34425a89.chunk.js",
-    "static/css/main.0a1ebcb5.chunk.css",
-    "static/js/main.03e238bf.chunk.js"
+    "static/js/2.f827ef3f.chunk.js",
+    "static/css/main.f9b2cd73.chunk.css",
+    "static/js/main.8530f87a.chunk.js"
   ]
 }
