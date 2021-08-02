@@ -14,11 +14,11 @@ function App() {
       <Navbar />
 
       <Switch>
-        <Route path="/" exact>
-          <Redirect to="/home" />
-        </Route>
+        {/* <Route path="/" exact>
+          <Redirect to="/" />
+        </Route> */}
 
-        <Route path="/home" exact>
+        <Route path="/" exact>
           <Home />
         </Route>
 
@@ -26,9 +26,9 @@ function App() {
           <AboutMe />
         </Route>
 
-        {/* <Route path="/PasswordGenerator-react/*">
-          <Redirect to="/PasswordGenerator-react/home" />
-        </Route> */}
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
       </Switch>
     </>
   );
